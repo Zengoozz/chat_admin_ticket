@@ -1,0 +1,62 @@
+/*import 'package:flutter/material.dart';
+
+import './ticketScreen.dart';
+
+class PopUp extends StatelessWidget {
+  void _selectOption(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      TicketTable.routeName,
+      arguments: {},
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return 
+PopupMenuButton(itemBuilder: (BuildContext ctx){[
+                PopupMenuItem(child: Text('Search Transaction'),value: ,)
+              ];});
+                  
+    /*Wrap(children: [
+      GestureDetector(
+        onTap: () {},
+        child: Column(
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                  Text(
+                    'Search Transaction',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: ()=>_selectOption(context),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.check,
+                    size: 30,
+                  ),
+                  Text(
+                    'Check Ticket',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ]);*/
+  }
+}*/

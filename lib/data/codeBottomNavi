@@ -1,0 +1,27 @@
+/*Container(
+        child: Center(
+          child: Text('Chat'),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        elevation: 5,
+        backgroundColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text(''),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.qr_code_scanner_rounded),
+            title: Text(''),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            title: Text(''),
+          ),
+        ],
+      ),
+*/
