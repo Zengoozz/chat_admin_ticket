@@ -1,4 +1,5 @@
 //#Packages
+import 'package:chat_admin/models/ticketDetails.dart';
 import 'package:flutter/material.dart';
 //#Data
 import '../data/dummyData.dart';
@@ -8,12 +9,19 @@ import './filterBar.dart';
 
 class TicketTable extends StatefulWidget {
   static const routeName = '/ticket-table';
+  final List<TicketDetail> tickets = ticket;
 
   @override
   _TicketTableState createState() => _TicketTableState();
 }
 
 class _TicketTableState extends State<TicketTable> {
+  void _deleteTicket(String id) {
+    setState(() {
+      ticket.removeWhere((tic) => tic.id == id);
+      Navigator.pop(context);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final PreferredSizeWidget appBar = AppBar(
@@ -48,7 +56,7 @@ class _TicketTableState extends State<TicketTable> {
                     bottom: 10,
                   ),
                   itemBuilder: (context, index) {
-                    return TicketItem(index);
+                    return TicketItem(index,_deleteTicket);
                   }),
             ),
           

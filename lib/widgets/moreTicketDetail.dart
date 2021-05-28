@@ -6,7 +6,8 @@ import '../data/dummyData.dart';
 
 class MoreDetails extends StatelessWidget {
   final int index;
-  MoreDetails(this.index);
+  final Function handlerEvent;
+  MoreDetails(this.index,this.handlerEvent);
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -114,7 +115,7 @@ class MoreDetails extends StatelessWidget {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: ()=>handlerEvent(ticket[index].id),
                     child: Text(
                       'Delete',
                       style: TextStyle(

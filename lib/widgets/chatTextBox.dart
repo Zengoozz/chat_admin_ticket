@@ -19,6 +19,7 @@ class _ChatTxtBoxState extends State<ChatTxtBox> {
     if (enteredMsg.isEmpty) return;
 
     widget.eventHandler(enteredMsg);
+    msgController.clear();
     //Navigator.of(context).pop();
   }
 

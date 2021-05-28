@@ -8,14 +8,15 @@ import './moreTicketDetail.dart';
 
 class TicketItem extends StatelessWidget {
   final int index;
-  TicketItem(this.index);
+  final Function deleteTicket;
+  TicketItem(this.index,this.deleteTicket);
 
   void _moreDetails(BuildContext ctx) {
     showModalBottomSheet<dynamic>(
       isScrollControlled: true,
       context: ctx,
       builder: (bctx) {
-        return MoreDetails(index);
+        return MoreDetails(index,deleteTicket);
       },
     );
   }
