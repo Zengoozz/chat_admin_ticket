@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './chatTextBox.dart';
 import './chat.dart';
 import './ticketScreen.dart';
+import '../models/chatMsg.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -12,6 +13,19 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   PreferredSizeWidget appBar = AppBar();
+  final List<ChatMessage> chatMsg = [];
+
+  void _sendMsg(String msgContent) {
+    final newMsg = ChatMessage(
+      msgContent: msgContent,
+      msgType: 'Sender',
+    );
+
+    setState(() {
+      chatMsg.add(newMsg);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,16 +92,18 @@ class _ChatScreenState extends State<ChatScreen> {
           )
         ],
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Chat(),
+          Expanded(
+            child: Chat(chatMsg),
+          ),
           Align(
-            alignment: Alignment.bottomLeft,
+            alignment: Alignment.bottomCenter,
             child: Container(
               height: MediaQuery.of(context).orientation == Orientation.portrait
                   ? (MediaQuery.of(context).size.height) * 0.07
                   : (MediaQuery.of(context).size.height) * 0.15,
-              child: ChatTxtBox(),
+              child: ChatTxtBox(_sendMsg),
             ),
           ),
         ],
