@@ -11,18 +11,14 @@ class ChatTxtBox extends StatefulWidget {
 
 class _ChatTxtBoxState extends State<ChatTxtBox> {
   final msgController = TextEditingController();
-    void _submitData() {
+  void _submitData() {
     if (msgController.text.isEmpty) return;
 
     final enteredMsg = msgController.text;
-    
 
-    if (enteredMsg.isEmpty )
-      return;
+    if (enteredMsg.isEmpty) return;
 
-    widget.eventHandler(
-      enteredMsg
-    );
+    widget.eventHandler(enteredMsg);
     //Navigator.of(context).pop();
   }
 
@@ -31,8 +27,11 @@ class _ChatTxtBoxState extends State<ChatTxtBox> {
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white
-        ),
+            border: Border.all(
+              color: Theme.of(context).hintColor,
+              width: 1,
+            ),
+            color: Colors.white),
         padding: EdgeInsets.only(
           left: 10,
           bottom: 3,
@@ -61,8 +60,7 @@ class _ChatTxtBoxState extends State<ChatTxtBox> {
             //),
             SizedBox(width: 15),
             Expanded(
-              child: 
-              TextField(
+              child: TextField(
                 controller: msgController,
                 decoration: InputDecoration(
                   hintText: 'Write a message...',
