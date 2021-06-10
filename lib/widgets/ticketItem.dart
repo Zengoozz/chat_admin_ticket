@@ -34,9 +34,9 @@ class TicketItem extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           maxRadius: 10,
-          backgroundColor: ticket[index].status == 'Closed'
+          backgroundColor: allTickets[index].status == 'Closed'
               ? Colors.red
-              : ticket[index].status == 'Waiting'
+              : allTickets[index].status == 'Waiting'
                   ? Colors.yellow
                   : Colors.green,
           child: Padding(
@@ -44,13 +44,13 @@ class TicketItem extends StatelessWidget {
           ),
         ),
         title: Text(
-          ticket[index].name,
+          allTickets[index].name,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         subtitle: Text(
-          DateFormat.yMMMMd().format(ticket[index].timeStamp),
+          DateFormat.yMMMMd().format(allTickets[index].timeStamp),
           style: TextStyle(
             color: Theme.of(context).hintColor,
             fontSize: 11,

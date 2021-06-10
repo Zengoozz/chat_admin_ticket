@@ -19,7 +19,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- ID: ${ticket[index].id}',
+                    '- ID: ${allTickets[index].id}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -31,7 +31,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- Title: ${ticket[index].name}',
+                    '- Title: ${allTickets[index].name}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -43,7 +43,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- Ticket Status: ${ticket[index].status}',
+                    '- Ticket Status: ${allTickets[index].status}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -55,7 +55,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- Date: ${DateFormat.yMEd().format(ticket[index].timeStamp)}',
+                    '- Date: ${DateFormat.yMEd().format(allTickets[index].timeStamp)}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -67,7 +67,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- Time: ${DateFormat.jm().format(ticket[index].timeStamp)}',
+                    '- Time: ${DateFormat.jm().format(allTickets[index].timeStamp)}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -79,7 +79,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- Username: ${ticket[index].userName}',
+                    '- Username: ${allTickets[index].userName}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -91,7 +91,7 @@ class MoreDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '- Assigned To: ${ticket[index].assignedTo}',
+                    '- Assigned To: ${allTickets[index].assignedTo}',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
@@ -104,18 +104,7 @@ class MoreDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   FlatButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Edit',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                  ),
-                  FlatButton(
-                    onPressed: ()=>handlerEvent(ticket[index].id),
+                    onPressed: ()=>handlerEvent(allTickets[index].id),
                     child: Text(
                       'Delete',
                       style: TextStyle(

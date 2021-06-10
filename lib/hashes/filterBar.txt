@@ -1,14 +1,12 @@
-//#Packages
+/* //#Packages
 import 'package:flutter/material.dart';
 
-class FilterBar extends StatefulWidget {
-  @override
-  _FilterBarState createState() => _FilterBarState();
-}
-
-class _FilterBarState extends State<FilterBar> {
-  String dropdownValue = 'ID';
-
+class FilterBar extends StatelessWidget {
+  final Function handler;
+  final TextEditingController controller;
+  FilterBar(this.handler,this.controller);
+  
+  
   @override
   Widget build(BuildContext context) {
     return Wrap(children: [
@@ -16,7 +14,7 @@ class _FilterBarState extends State<FilterBar> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(width: 10),
-          DropdownButton<String>(
+          /*DropdownButton<String>(
             value: dropdownValue,
             icon: const Icon(Icons.arrow_downward),
             iconSize: 24,
@@ -26,7 +24,7 @@ class _FilterBarState extends State<FilterBar> {
               height: 1,
               color: Theme.of(context).primaryColorDark,
             ),
-            onChanged: (String newValue) {
+             onChanged: (String newValue) {
               setState(() {
                 dropdownValue = newValue;
               });
@@ -44,12 +42,13 @@ class _FilterBarState extends State<FilterBar> {
                 child: Text(value),
               );
             }).toList(),
-          ),
+          ), */
           SizedBox(width: 10),
           SizedBox(
             child: TextField(
+              controller: controller,
               decoration: InputDecoration(
-                hintText: 'Filter by...',
+                hintText: 'Search here..',
                 hintStyle: TextStyle(color: Theme.of(context).hintColor),
                 border: InputBorder.none,
               ),
@@ -58,7 +57,7 @@ class _FilterBarState extends State<FilterBar> {
           ),
           IconButton(
             icon: Icon(Icons.done),
-            onPressed: () {},
+            onPressed: () => handler,
             color: Theme.of(context).primaryColor,
           )
         ],
@@ -66,3 +65,4 @@ class _FilterBarState extends State<FilterBar> {
     ]);
   }
 }
+ */

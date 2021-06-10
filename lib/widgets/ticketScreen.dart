@@ -1,27 +1,40 @@
 //#Packages
-import 'package:chat_admin/models/ticketDetails.dart';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 //#Data
 import '../data/dummyData.dart';
 //#Widgets
 import './ticketItem.dart';
-import './filterBar.dart';
+import './searchBar.dart';
+//#Models
+import '../models/ticketDetails.dart';
 
 class TicketTable extends StatefulWidget {
   static const routeName = '/ticket-table';
-  final List<TicketDetail> tickets = ticket;
 
   @override
   _TicketTableState createState() => _TicketTableState();
 }
 
 class _TicketTableState extends State<TicketTable> {
+  List<TicketDetail> tickets;
+  String query = '';
+
   void _deleteTicket(String id) {
     setState(() {
-      ticket.removeWhere((tic) => tic.id == id);
+      allTickets.removeWhere((tic) => tic.id == id);
       Navigator.pop(context);
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+
+    tickets = allTickets;
+  }
+
   @override
   Widget build(BuildContext context) {
     final PreferredSizeWidget appBar = AppBar(
@@ -36,33 +49,64 @@ class _TicketTableState extends State<TicketTable> {
     //final routeArgs = ModalRoute.of(context).settings.arguments as Map<String,String>;
     return Scaffold(
       appBar: appBar,
-      body: //Card(
-          //margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-          //elevation: 5,
-          //child:
-          Column(
+      body: Column(
         children: [
           Container(
-              height:MediaQuery.of(context).orientation == Orientation.portrait? (MediaQuery.of(context).size.height -
-                  appBar.preferredSize.height ) * 0.1 : (MediaQuery.of(context).size.height -
-                  appBar.preferredSize.height ) * 0.2,
-              child: FilterBar()),
+              height: MediaQuery.of(context).orientation == Orientation.portrait
+                  ? (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.1
+                  : (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.2,
+              ), /*child: SearchBar(
+                text: query,
+                onChanged: {},
+              )), */
           Divider(),
           Expanded(
-              child: ListView.builder(
-                  itemCount: ticket.length,
-                  padding: EdgeInsets.only(
-                    top: 10,
-                    bottom: 10,
-                  ),
-                  itemBuilder: (context, index) {
-                    return TicketItem(index,_deleteTicket);
-                  }),
-            ),
-          
+            child: ListView.builder(
+                itemCount: allTickets.length,
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: 10,
+                ),
+                itemBuilder: (context, index) {
+                  return TicketItem(index, _deleteTicket);
+                }),
+          ),
         ],
       ),
     );
-    //);
   }
-}
+
+  /* Widget buildSearch() => SearchBar(
+        text: query,
+        onChanged: searchTicket,
+      ); */
+
+ /*  List<TicketDetail> searchedTickets = allTickets;
+  void searchTicket(String query) {
+    allTickets.forEach((t) {
+      final nameLower = t.name.toLowerCase();
+      final usernameLower = t.userName.toLowerCase();
+      final assignedLower = t.assignedTo.toLowerCase();
+      final statusLower = t.status.toLowerCase();
+      final id = t.id.toLowerCase();
+      final searchLower = query.toLowerCase();
+
+      if (nameLower.contains(searchLower) ||
+          usernameLower.contains(searchLower) ||
+          assignedLower.contains(searchLower) ||
+          statusLower.contains(searchLower) ||
+          id.contains(searchLower)) {
+        searchedTickets.add(t);
+      } 
+
+      setState(() {
+        this.query = query;
+        this.tickets = searchedTickets;
+      });
+    });*/
+  }
+
